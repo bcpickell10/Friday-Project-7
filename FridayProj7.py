@@ -40,22 +40,23 @@ def sign_in():
     else:
         messagebox.showerror("Error", "Invalid email or password")
 
-# Create the sign-up window
-sign_up_window = tk.Tk()
-sign_up_window.title("Sign Up")
+# Function to open the sign-up window
+def open_sign_up_window():
+    sign_up_window = tk.Toplevel(sign_in_window)
+    sign_up_window.title("Sign Up")
 
-email_label = tk.Label(sign_up_window, text="Email:")
-email_label.grid(row=0, column=0, padx=10, pady=5)
-email_entry = tk.Entry(sign_up_window)
-email_entry.grid(row=0, column=1, padx=10, pady=5)
+    email_label = tk.Label(sign_up_window, text="Email:")
+    email_label.grid(row=0, column=0, padx=10, pady=5)
+    email_entry = tk.Entry(sign_up_window)
+    email_entry.grid(row=0, column=1, padx=10, pady=5)
 
-password_label = tk.Label(sign_up_window, text="Password:")
-password_label.grid(row=1, column=0, padx=10, pady=5)
-password_entry = tk.Entry(sign_up_window, show="*")
-password_entry.grid(row=1, column=1, padx=10, pady=5)
+    password_label = tk.Label(sign_up_window, text="Password:")
+    password_label.grid(row=1, column=0, padx=10, pady=5)
+    password_entry = tk.Entry(sign_up_window, show="*")
+    password_entry.grid(row=1, column=1, padx=10, pady=5)
 
-sign_up_button = tk.Button(sign_up_window, text="Sign Up", command=sign_up)
-sign_up_button.grid(row=2, column=1, padx=10, pady=5)
+    sign_up_button = tk.Button(sign_up_window, text="Sign Up", command=sign_up)
+    sign_up_button.grid(row=2, column=1, padx=10, pady=5)
 
 # Create the sign-in window
 sign_in_window = tk.Tk()
@@ -74,7 +75,10 @@ password_entry.grid(row=1, column=1, padx=10, pady=5)
 sign_in_button = tk.Button(sign_in_window, text="Sign In", command=sign_in)
 sign_in_button.grid(row=2, column=1, padx=10, pady=5)
 
-sign_up_window.mainloop()
+# Button to open the sign-up window
+go_to_sign_up_button = tk.Button(sign_in_window, text="Don't have an account? Sign Up", command=open_sign_up_window)
+go_to_sign_up_button.grid(row=3, column=1, padx=10, pady=5)
+
 sign_in_window.mainloop()
 
 # Close the database connection when application exits
